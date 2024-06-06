@@ -1,7 +1,7 @@
 # PerceptiveAgent
 Code for Talk With Human-like Agents: Empathetic Dialogue Through Perceptible Acoustic Reception and Reaction (ACL24))
 
-![](https://github.com/Haoqiu-Yan/PerceptiveAgent/blob/main/modelv4.pdf)
+![](https://github.com/Haoqiu-Yan/PerceptiveAgent/blob/main/PerceptiveAgent.png)
 
 ## Authors
 Haoqiu Yan, Yongxin Zhu, Kai Zheng, Bing Liu, Haoyu Cao, Deqiang Jiang and Linli Xu.
