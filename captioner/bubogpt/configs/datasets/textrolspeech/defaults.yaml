@@ -1,0 +1,5 @@
+datasets:
+  textrolspeech:
+    data_type: audio
+    build_info:
+      storage: datasets/textrolspeech/web_datasets/random_train_640pairs/random_train_640pairs{000000..000033}.tar

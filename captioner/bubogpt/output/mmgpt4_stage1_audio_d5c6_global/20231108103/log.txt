@@ -1,0 +1,97 @@
+{
+    "run": {
+        "task": "image_text_pretrain",
+        "lr_sched": "linear_warmup_cosine_lr",
+        "init_lr": 0.0001,
+        "min_lr": 8e-05,
+        "warmup_lr": 1e-06,
+        "weight_decay": 0.05,
+        "max_epoch": 10,
+        "batch_size_train": 32,
+        "batch_size_eval": 32,
+        "num_workers": 1,
+        "warmup_steps": 5000,
+        "iters_per_epoch": 5000,
+        "seed": 42,
+        "output_dir": "output/mmgpt4_stage1_audio_d5c6_global",
+        "amp": true,
+        "resume_ckpt_path": null,
+        "evaluate": false,
+        "train_splits": [
+            "train"
+        ],
+        "device": "cuda",
+        "world_size": 4,
+        "dist_url": "env://",
+        "distributed": true,
+        "rank": 0,
+        "gpu": 0,
+        "dist_backend": "nccl"
+    },
+    "model": {
+        "arch": "capsp",
+        "freeze_imagebind": true,
+        "freeze_qformer": false,
+        "q_former_model": "checkpoints/blip2_pretrained_flant5xxl.pth",
+        "num_query_token": 32,
+        "llama_model": "./rerun_bubo/vicuna-7b-v1.1/",
+        "prompt": "",
+        "model_type": "pretrain_vicuna",
+        "joiner_cfg": {
+            "audio": {
+                "feat_dim": 768,
+                "post_dims": [
+                    768
+                ],
+                "num_query_token": 32,
+                "freeze_qformer": false,
+                "pre_dims": [],
+                "qformer_model": "",
+                "freeze_post": false
+            }
+        },
+        "freeze_wav2vec": true,
+        "gpt2_config": "./config/capsp_decoder_gpt2.json"
+    },
+    "preprocess": {
+        "vis_processor": {
+            "train": {
+                "name": "imagebind_vision_train",
+                "image_size": 224
+            },
+            "eval": {
+                "name": "imagebind_vision_eval",
+                "image_size": 224
+            }
+        },
+        "text_processor": {
+            "train": {
+                "name": "imagebind_caption"
+            },
+            "eval": {
+                "name": "imagebind_caption"
+            }
+        }
+    },
+    "datasets": {
+        "textrolspeech": {
+            "data_type": "audio",
+            "build_info": {
+                "storage": "datasets/textrolspeech/web_datasets/random_train_640pairs/random_train_640pairs{000000..000033}.tar"
+            },
+            "audio_processor": {
+                "train": {
+                    "name": "wav2vec_audio_train",
+                    "target_sr": 16000,
+                    "max_duration": 20
+                }
+            },
+            "text_processor": {
+                "train": {
+                    "name": "imagebind_caption"
+                }
+            },
+            "sample_ratio": 2
+        }
+    }
+}

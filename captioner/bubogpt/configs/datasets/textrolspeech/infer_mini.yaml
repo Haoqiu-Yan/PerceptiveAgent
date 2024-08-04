@@ -1,0 +1,9 @@
+datasets:
+  textrolspeech:
+    data_type: audio
+    build_info:
+      train:
+        storage: datasets/textrolspeech/random_train/mini/
+      val:
+        storage: datasets/textrolspeech/random_train/mini/
+      # storage: datasets/textrolspeech/web_datasets/mini/mini000000.tar

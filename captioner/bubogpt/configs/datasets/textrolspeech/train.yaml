@@ -1,0 +1,12 @@
+datasets:
+  textrolspeech:
+    data_type: audio
+    build_info:
+      train:
+        storage: datasets/textrolspeech/random_train/splits/train
+        # storage: datasets/textrolspeech/web_datasets/random_train_1280pairs/random_train_1280pairs{000000..000032}.tar
+      val:
+        storage: datasets/textrolspeech/random_train/splits/val
+        # storage: datasets/textrolspeech/web_datasets/random_train_1280pairs/random_train_1280pairs000033.tar
+      # test:
+      #   storage:

@@ -1,0 +1,77 @@
+model:
+  arch: "capsp_qformer_gpt2"
+  model_type: None
+  freeze_imagebind: True
+  freeze_qformer: False
+  llama_model: ${ABSOLUTE_PATH_OF_vicuna-7b}
+  joiner_cfg:
+    audio:
+      feat_dim: 768
+      post_dims: [768,]
+      num_query_token: 32
+      freeze_qformer: False
+  freeze_wav2vec: True
+  gpt2_config: "./configs/capsp_decoder_gpt2.json"
+  bubogpt_q_former_model: ${ABSOLUTE_PATH_OF_bubogpt_7b}
+  prompt_path: "configs/prompts_eg.txt"
+
+
+datasets:
+  textrolspeech:
+    audio_processor:
+      train:
+        name: "imagebind_audio_train"
+        clip_duration: 5
+        clips_per_video: 6
+      eval:
+        name: "imagebind_audio_train"
+        clip_duration: 5
+        clips_per_video: 6
+    text_processor:
+      train:
+        name: "imagebind_caption"
+      eval:
+        name: "imagebind_caption"
+    sample_ratio: 2
+    type: "train"
+    
+
+run:
+  runner: "runner_val"
+  task: "audio_to_captioning"
+  # optimizer
+  lr_sched: "linear_warmup_cosine_lr"
+  init_lr: 1e-4
+  min_lr: 8e-5
+  warmup_lr: 1e-6
+  # resume_ckpt_path: ${PATH_OF_captioner.pt}
+
+  weight_decay: 0.05
+  max_epoch: 8
+  batch_size_train: 16
+  batch_size_eval: 16
+  num_workers: 4
+  warmup_steps: 5397
+  iters_per_epoch: 5397
+
+  seed: 42
+  output_dir: ${PATH_OF_MODEL_SAVEDIR}
+
+  amp: True
+  evaluate: False
+  train_splits: ["train"]
+  valid_splits: ["val"]
+  # test_splits: ["test"]
+  report_metric: False
+
+  # add by haoqiu
+  save_ckpt_interval: 3
+  
+  max_len: 50
+  min_len: 20
+  num_beams: 5
+
+  device: "cuda"
+  world_size: 4
+  dist_url: "env://"
+  distributed: true

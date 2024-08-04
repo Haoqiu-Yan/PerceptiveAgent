@@ -1,0 +1,5 @@
+datasets:
+  soundbible:
+    data_type: audio
+    build_info:
+      storage: rerun_bubo/WavCaps/web_datasets/SoundBible/SoundBible000000.tar

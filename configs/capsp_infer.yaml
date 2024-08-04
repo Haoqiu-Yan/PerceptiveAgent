@@ -1,0 +1,73 @@
+model:
+  arch: "capsp_qformer_gpt2"
+  model_type: None
+  freeze_imagebind: True
+  freeze_qformer: False
+  llama_model: ${ABSOLUTE_PATH_OF_vicuna-7b}
+  joiner_cfg:
+    audio:
+      feat_dim: 768
+      post_dims: [768,]
+      num_query_token: 32
+      freeze_qformer: False
+  freeze_wav2vec: True
+  gpt2_config: "./configs/capsp_decoder_gpt2.json"
+  max_txt_len: 160
+  end_sym: "###"
+  low_resource: False
+  # ckpt: ['models/capsp/gpt_train_with_prompt/checkpoint_4.pth',]
+  ckpt: [${PATH_CKPT},]
+  bubogpt_q_former_model: ${ABSOLUTE_PATH_OF_bubogpt_7b}
+  prompt_path: "configs/prompts_eg.txt"
+  
+
+datasets:
+  textrolspeech:  # Double check
+    audio_processor:
+      eval:
+        name: "imagebind_audio_train"
+        clip_duration: 5
+        clips_per_video: 6
+    text_processor:
+      eval:
+        name: "imagebind_caption"
+    data_type: "audio"
+    build_info:
+      test:
+        storage: ${PATH_OF_DATADIR}
+
+
+run:
+  runner: "runner_val"
+  task: "audio_to_captioning"
+  evaluate: True
+  test_splits: ["test"]
+  report_metric: True
+
+  batch_size_eval: 16
+  output_dir: ${OUTPUT_DIR}
+
+  seed: 42
+  num_workers: 4
+
+  max_len: 50
+  min_len: 20
+  
+  # beam search
+  use_beam: True
+  num_beam: 5
+  no_repeat_ngram_size: 2
+  # top-k
+  # use_topk: True
+  # top_k: 10
+  # top-k nucleus
+  # use_topk_nucleus: True
+  # top_p: 0.92
+
+  device: "cuda"
+  world_size: 4
+  dist_url: "env://"
+  distributed: True
+
+
+
