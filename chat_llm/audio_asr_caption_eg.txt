@@ -1,8 +1,0 @@
-dev-dia0_utt1.wav	What?	The low-pitched male voice radiates calmness, its words lingering in the air with a unhurried graceThe deliberate and unhurried cadence of a deep-vo
-dev-dia0_utt0.wav	Oh my God, he’s lost it. He’s totally lost it.	A man maintains a normal pitch as he speaks slowly, imbuing his sickened words with moderate energyThe man conveys his message with rapid speech and a hint of normal energy,
-dev-dia2_utt4.wav	Yeah!	A woman with a quick, high-pitched voice exudes energySpeaking calmly, her tone is distinctly highShe conveys the messageSlowly and softly,
-dev-dia2_utt1.wav	Well! Well! Well! Joey Tribbiani! So you came back huh? They	Her sound height is really high, reflecting her slow speaking speed and normal energyA girl with a sharp tone speaks rapidly but in a very quiet mannerA female voice
-dev-dia2_utt2.wav	What are you talkin’ about? I never left you! You’ve always been my agent!	A man's voice maintains normal pitch as he engages in dialogue with an average speaking speed and typical energySpeaking at a regular speed, the male speaker uses his deep voice to talk
-dev-dia2_utt5.wav	Oh well, no harm, no foul.	Her tone is normal, but her energy level is highHer voice is high-pitched as she speaks rapidlyA female's voice carries an energetic high pitchHer
-dev-dia2_utt0.wav	Hey Estelle, listen	With minimal energy, the man's high-pitched voice complements his unhurried paceA male speaker's unhurried speech, paired with his normal pitch, reflects a hint
-dev-dia2_utt3.wav	Really?!	Her words flowed slowly, her energy staying quiet, pitch reaching high notesSlowly and softly, her voice held their various forms of expressionIn a calm and low-energy manner

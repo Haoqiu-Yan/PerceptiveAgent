@@ -1,0 +1,6 @@
+dev-dia0_utt0-Phoebe-sadness.wav	dev-dia0_utt1-Monica-surprise.wav
+dev-dia2_utt0-Joey-neutral.wav	dev-dia2_utt1-Estelle-surprise.wav
+dev-dia2_utt0-Joey-neutral.wav,dev-dia2_utt1-Estelle-surprise.wav,dev-dia2_utt2-Joey-surprise.wav	dev-dia2_utt3-Estelle-surprise.wav
+dev-dia2_utt0-Joey-neutral.wav,dev-dia2_utt1-Estelle-surprise.wav,dev-dia2_utt2-Joey-surprise.wav,dev-dia2_utt3-Estelle-surprise.wav,dev-dia2_utt4-Joey-joy.wav	dev-dia2_utt5-Estelle-neutral.wav
+dev-dia2_utt0-Joey-neutral.wav,dev-dia2_utt1-Estelle-surprise.wav	dev-dia2_utt2-Joey-surprise.wav
+dev-dia2_utt0-Joey-neutral.wav,dev-dia2_utt1-Estelle-surprise.wav,dev-dia2_utt2-Joey-surprise.wav,dev-dia2_utt3-Estelle-surprise.wav	dev-dia2_utt4-Joey-joy.wav
