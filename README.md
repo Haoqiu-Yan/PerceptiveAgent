@@ -75,7 +75,11 @@ python ./captioner/dataset/process.py --dataset expresso --data_dir ${DATA_ROOT}
 
 ### Training
 
-Run the following command to train a speech captioner. You can update `llama_model` in `configs/capsp_train_gpt2.yaml` by downloading the pretrained Vicuna weights, according to the [instruction](https://github.com/magic-research/bubogpt/blob/main/PrepareVicuna.md) in [BuboGPT](https://github.com/magic-research/bubogpt/blob/main/README.md#models).
+To update `llama_model` in `configs/capsp_train_gpt2.yaml`, you can download the pretrained Vicuna weights, according to the [instruction](https://github.com/magic-research/bubogpt/blob/main/PrepareVicuna.md) in [BuboGPT](https://github.com/magic-research/bubogpt/blob/main/README.md#models).
+
+To update `ABSOLUTE_PATH_OF_bubogpt_7b` in `configs/capsp_infer.yaml`, you can download the pretrained bubogpt_7b from the [link](https://huggingface.co/magicr/BuboGPT-ckpt/resolve/main/bubogpt_7b.pth).
+
+Then, run the following command to train a speech captioner. 
 
 `bash scripts/captioner_train.sh ${CUDA_ID} ${CUDA_NUM}`
 
@@ -162,30 +166,35 @@ python -m torch.distributed.launch --nproc_per_node $GPUS \
 1. Infer with the pretrained model.
 
 ```bash
+CUDA_ID=$1
+GPUS=$2
+
 INPUT_CODE_FILE=./input_egs/syntheizer_pretrain_val.txt
 ckpt=g_00400000
 CHECKPOINT_FILE=/path/of/ckptdir/${ckpt}
 OUTPUT_DIR=/path/to/savedir
 mkdir $OUTPUT_DIR
 
-python ./synthesizer/examples/pretrain/inference_example.py \
+CUDA_VISIBLE_DEVICES=$CUDA_ID python ./synthesizer/examples/pretrain/inference_example.py \
     --input_code_file $INPUT_CODE_FILE \
     --checkpoint_file $CHECKPOINT_FILE \
     --output_dir $OUTPUT_DIR \
-    --num-gpu $GPUS \
-    --dur-prediction (之前没有，刚加的)
+    --num-gpu $GPUS
 ```
 
 2. Infer with the finetuned model.
 
 ```bash
+CUDA_ID=$1
+GPUS=$2
+
 INPUT_CODE_FILE=./input_egs/syntheizer_finetune_dev.txt
 ckpt=g_00200000
 CHECKPOINT_FILE=/path/of/ckptdir/${ckpt}
 OUTPUT_DIR=/path/to/savedir
 mkdir $OUTPUT_DIR
 
-python code/synthesis/examples/mcond_expresso/inference_example.py \
+CUDA_VISIBLE_DEVICES=$CUDA_ID python ./synthesizer/examples/mcond_expresso/inference_example.py \
     --input_code_file $INPUT_CODE_FILE \
     --checkpoint_file $CHECKPOINT_FILE \
     --output_dir $OUTPUT_DIR \

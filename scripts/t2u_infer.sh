@@ -20,7 +20,7 @@ DATA_ROOT=/path/to/save/data-bin
 fairseq-preprocess  --source-lang $src --target-lang $tgt \
   --only-source \
   --srcdict ./input_egs/dict.bpe-spm.txt  \
-  --trainpref  /path/bpe-spm/dir  \
+  --trainpref  ./output_t2u/t2u_infer_input  \
   --destdir ${DATA_ROOT} --workers 4 
 
 cp ./input_egs/dict.units.txt $DATA_ROOT
